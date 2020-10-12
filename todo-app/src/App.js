@@ -55,6 +55,7 @@ class App extends React.Component {
         this.setState({alerts: response.errors})
       }
       else {
+        localStorage.setItem('token', response.token)
         this.setState({user: response.user, alerts: ["User successfully created!"]})
       }
     })
