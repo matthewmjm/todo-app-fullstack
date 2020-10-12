@@ -57,6 +57,12 @@ class TodoForm extends React.Component {
             ) : null
         }
 
+    showCloseButton = () => {
+        return this.props.todo
+            ? <div><button className="close-button" onClick={this.props.handleToggle}>Close</button></div>
+            : null
+    }
+
     render() {
         const { title, content, urgent } = this.state
         return (
@@ -87,7 +93,8 @@ class TodoForm extends React.Component {
                         />
                     </div>
                     {this.showDoneCheckbox()}
-                    <input type="submit"/>
+                    <input className="submit-button" type="submit"/>
+                    {this.showCloseButton()}
                 </form>
             </> 
         );

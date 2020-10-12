@@ -2,6 +2,7 @@ import React from 'react';
 import TodoContainer from './components/TodoContainer';
 import TodoForm from './components/TodoForm';
 import './App.css';
+import {patchTodo, postTodo, destroyTodo} from './helpers/index'
 const baseURL = `http://localhost:4000/todos/`
 
 class App extends React.Component {
@@ -20,42 +21,22 @@ class App extends React.Component {
   }
 
   addTodo = (newTodo) => {
-    this.setState({
-      todos: [...this.state.todos, newTodo]
-    })
-
-    fetch(baseURL, {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      }, 
-      body: JSON.stringify({todo: newTodo})
-    })
+    this.setState({todos: [...this.state.todos, newTodo]})
+    postTodo(newTodo)
   }
 
   updateTodo = (updatedTodo) => {
     let todos = this.state.todos.map(todo => todo.id === updatedTodo.id ? updatedTodo : todo)
     this.setState({todos})
-    fetch(`${baseURL}${updatedTodo.id}`, {
-      method: "PATCH",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({todo: updatedTodo})
-    })
+    patchTodo(updatedTodo)
   }
 
   deleteTodo = (id) => {
     let filtered = this.state.todos.filter(todo => todo.id !== id)
-    this.setState({
-      todos: filtered
-    })
-
-    fetch(`${baseURL}${id}`, {method: "DELETE"})
+    this.setState({todos: filtered})
+    destroyTodo(id)
   }
- 
+
   render() {
     return (
       <div className="App">

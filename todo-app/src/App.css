@@ -60,3 +60,17 @@ form.todo-form {
   color: black;
   font-weight: bold;
 }
+
+.submit-button {
+  background-color: yellow; 
+  color: black;
+  font-weight: bold;
+}
+
+.close-button {
+  background-color: black; 
+  color: whitesmoke;
+  font-weight: bold;
+  width: 25%;
+  justify-content: center;
+}
