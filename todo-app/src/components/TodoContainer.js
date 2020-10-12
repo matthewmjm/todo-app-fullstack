@@ -1,11 +1,16 @@
 import React from 'react';
 import TodoItem from './TodoItem';
 
-function TodoContainer() {
+function TodoContainer({ todos }) {
+
+    const showTodos = () => {
+        return todos.map(todo => <TodoItem key={todo.id} {...todo} />)
+    }
     return (
         <>
-            <p>This is the Todo Container</p>
-            <TodoItem />
+            <ul className="todo-list">
+                {showTodos()}
+            </ul>
         </>
     )
 

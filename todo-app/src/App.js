@@ -9,6 +9,10 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    this.getTodos();
+  }
+  
+  getTodos = () => {
     fetch(baseURL)
       .then(response => response.json())
       .then(results => this.setState({todos:results}))
@@ -18,7 +22,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <h1>Todo App</h1>
-        <TodoContainer />
+        <TodoContainer todos={this.state.todos} />
       </div>
     );
   }

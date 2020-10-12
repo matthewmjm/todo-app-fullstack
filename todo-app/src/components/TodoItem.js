@@ -1,11 +1,11 @@
 import React from 'react';
 
-function TodoItem() {
+function TodoItem({ title, content }) {
     return (
         <>
-            <p>This is the Todo Item Component</p>
-            <li>
-                TodoItem
+            <li className="todo-item">
+                <h2>{title}</h2>
+                <h3>{content}</h3>
             </li>
         </>
     )
