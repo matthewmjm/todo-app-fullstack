@@ -1,5 +1,33 @@
+body {
+  background-color: lightskyblue;
+
+}
+
 .App {
   text-align: center;
+}
+
+form.todo-form {
+  border: solid black;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: rgb(98, 191, 248);
+}
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 250px;
+  margin: 0 auto;
+  justify-content: space-evenly;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.urgent {
+  justify-content: space-between;
 }
 
 .todo-list {
@@ -8,12 +36,20 @@
   flex-flow: wrap;
   justify-content: space-between;
   width: 90%;
+  margin: 0 auto;
+  padding-inline-start: 0;
 }
 
 .todo-item {
+  background-color: whitesmoke;
   width: 200px;
   height: 150px;
-  box-shadow: 0 20px 20px -10px gray;
+  box-shadow: 0 20px 20px -10px rgb(1, 157, 253);
   text-align: center;
   border-radius: 6px;
+}
+
+.delete-button {
+  background-color: rgb(199, 34, 34);
+  color: whitesmoke;
 }
