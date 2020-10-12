@@ -20,6 +20,7 @@ export function postTodo(newTodo) {
         }, 
         body: JSON.stringify({todo: newTodo})
     })
+    window.location.reload();
 }
 
 export function destroyTodo(id) {
