@@ -30,7 +30,20 @@ class App extends React.Component {
         "Accept": "application/json",
         "Content-Type": "application/json"
       }, 
-      body: JSON.stringify(newTodo)
+      body: JSON.stringify({todo: newTodo})
+    })
+  }
+
+  updateTodo = (updatedTodo) => {
+    let todos = this.state.todos.map(todo => todo.id === updatedTodo.id ? updatedTodo : todo)
+    this.setState({todos})
+    fetch(`${baseURL}${updatedTodo.id}`, {
+      method: "PATCH",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({todo: updatedTodo})
     })
   }
 
@@ -42,13 +55,14 @@ class App extends React.Component {
 
     fetch(`${baseURL}${id}`, {method: "DELETE"})
   }
-
+ 
   render() {
     return (
       <div className="App">
         <h1>Todo App</h1>
-        <TodoForm addTodo={this.addTodo} />
-        <TodoContainer deleteTodo={this.deleteTodo} todos={this.state.todos} />
+        {/* <TodoForm addTodo={this.addTodo} /> */}
+        <TodoForm submitAction={this.addTodo} />
+        <TodoContainer updateTodo={this.updateTodo} deleteTodo={this.deleteTodo} todos={this.state.todos} />
       </div>
     );
   }
